@@ -1,0 +1,243 @@
+{
+ "page_title": "Tên sản phẩm 25 ô vuông",
+ "eyebrow": "Thương hiệu · TikTok Shop · dd/mm – dd/mm/yyyy",
+ "title": "Khung 25 ô vuông và bản đồ video hiệu quả của <sản phẩm>",
+ "lede": "Dựng từ PDP TikTok Shop, transcript và contact sheet của top video theo GMV Max, file phân tích content hit và bộ skill TikTok Ads.",
+ "inhouse_name": "ten_kenh_inhouse",
+ "takeaways": [
+  {
+   "big": "000 tr",
+   "text": "Con số quan trọng nhất và ý nghĩa của nó."
+  },
+  {
+   "big": "x/y idea",
+   "text": "chưa có creative trong top."
+  }
+ ],
+ "cells": {
+  "PRD": [
+   "Tên sản phẩm",
+   "Gói bán chính, ví dụ ruột + vỏ combo"
+  ],
+  "U1": [
+   "USP 1",
+   "Mô tả ngắn USP 1, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C1": [
+   "Khách hàng 1",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S1": [
+   "Hoàn cảnh 1",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U2": [
+   "USP 2",
+   "Mô tả ngắn USP 2, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C2": [
+   "Khách hàng 2",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S2": [
+   "Hoàn cảnh 2",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U3": [
+   "USP 3",
+   "Mô tả ngắn USP 3, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C3": [
+   "Khách hàng 3",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S3": [
+   "Hoàn cảnh 3",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U4": [
+   "USP 4",
+   "Mô tả ngắn USP 4, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C4": [
+   "Khách hàng 4",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S4": [
+   "Hoàn cảnh 4",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U5": [
+   "USP 5",
+   "Mô tả ngắn USP 5, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C5": [
+   "Khách hàng 5",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S5": [
+   "Hoàn cảnh 5",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U6": [
+   "USP 6",
+   "Mô tả ngắn USP 6, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C6": [
+   "Khách hàng 6",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S6": [
+   "Hoàn cảnh 6",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U7": [
+   "USP 7",
+   "Mô tả ngắn USP 7, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C7": [
+   "Khách hàng 7",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S7": [
+   "Hoàn cảnh 7",
+   "Khi nào, ở đâu, sự kiện gì"
+  ],
+  "U8": [
+   "USP 8",
+   "Mô tả ngắn USP 8, có số liệu nếu có (lấy từ PDP)"
+  ],
+  "C8": [
+   "Khách hàng 8",
+   "Ai, đặc điểm gì (rút từ lời thoại video)"
+  ],
+  "S8": [
+   "Hoàn cảnh 8",
+   "Khi nào, ở đâu, sự kiện gì"
+  ]
+ },
+ "ideas": [
+  {
+   "id": 1,
+   "cells": [
+    "C1",
+    "S8",
+    "U1",
+    "U3"
+   ],
+   "title": "Tên idea đã có video",
+   "hook": "Câu hook + cảnh chính.",
+   "gap": false
+  },
+  {
+   "id": 2,
+   "cells": [
+    "C4",
+    "S4",
+    "U6"
+   ],
+   "title": "Tên idea chưa có video",
+   "hook": "Câu hook + cảnh chính.",
+   "gap": true
+  }
+ ],
+ "idea_videos": {
+  "1": [
+   "<item_id>",
+   "<item_id>"
+  ]
+ },
+ "other": {
+  "title": "Ngoài khung",
+  "desc": "Video không gắn được với khách hàng/hoàn cảnh cụ thể.",
+  "videos": []
+ },
+ "idea_lede": "Idea đã có video được xếp theo thứ tự trong khung. Idea chưa có creative cần team sản xuất bổ sung. GMV tính bằng triệu đồng.",
+ "playbook": {
+  "replicate": [
+   "<b>Idea X</b>: lý do nhân bản và cách làm."
+  ],
+  "new": [
+   "<b>Idea Y</b>: lý do ưu tiên sản xuất."
+  ]
+ },
+ "top_note": "Top N chiếm x% GMV Inhouse và y% GMV KOC.",
+ "hook_lede": "GMV, hook-rate, xem 6 giây, CTR và CVR lấy từ GMV Max report. Contact sheet cắt từ file video gốc. Khung phân tích dùng các skill tiktok-creative-playbook, tt-ads-creative-strategy-diagnosis, tt4b-creative-engine, lifestyle-durable-goods-growth-diagnosis, creative-asset-lifecycle-optimizer.",
+ "observations": [
+  "<b>Quy luật 1.</b> Mô tả + số liệu nhóm."
+ ],
+ "rules": [
+  "<b>Quy tắc skill</b> (tên skill): áp vào video nào, sửa gì."
+ ],
+ "storyboard": [
+  {
+   "t": "0–1s · Hình",
+   "body": "Người dùng sản phẩm, sản phẩm chiếm 50–60% khung, title tên sản phẩm.",
+   "ref": "Mẫu: video ..."
+  },
+  {
+   "t": "1–3s · Lời",
+   "body": "Một câu so sánh hoặc nỗi đau.",
+   "ref": "Playbook: so sánh"
+  },
+  {
+   "t": "3–8s · Bằng chứng",
+   "body": "Size gap, macro chất liệu hoặc demo.",
+   "ref": ""
+  },
+  {
+   "t": "8–12s · Ưu đãi",
+   "body": "Combo, giá, quà ở 1/3 dưới khung.",
+   "ref": ""
+  },
+  {
+   "t": "Cuối · CTA",
+   "body": "Bấm giỏ hàng góc trái.",
+   "ref": "H6 bước tiếp theo"
+  }
+ ],
+ "claims": [
+  {
+   "level": "ok",
+   "label": "An toàn",
+   "text": "Thông số khớp PDP",
+   "reason": "Khớp mô tả PDP",
+   "alt": "Giữ nguyên"
+  },
+  {
+   "level": "thin",
+   "label": "Cần kiểm",
+   "text": "Câu tuyệt đối hoá",
+   "reason": "Chưa có bằng chứng",
+   "alt": "Câu thay thế"
+  },
+  {
+   "level": "gap",
+   "label": "Chặn",
+   "text": "Claim y tế / sai chất liệu",
+   "reason": "Mâu thuẫn PDP hoặc dễ bị từ chối",
+   "alt": "Câu thay thế"
+  }
+ ],
+ "skip_ids": [],
+ "skip_note": "",
+ "thresholds": {
+  "v2": [
+   25,
+   12
+  ],
+  "v6": [
+   12,
+   4
+  ],
+  "ctr": [
+   4,
+   1.5
+  ],
+  "cvr": [
+   5,
+   2
+  ]
+ },
+ "source_note": "Nguồn: GMV Max report (Business API), file export creative, PDP TikTok Shop, phụ đề tự động của video."
+}

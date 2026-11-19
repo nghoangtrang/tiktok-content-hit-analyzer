@@ -1,0 +1,235 @@
+<title>{{PAGE_TITLE}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lexend:wght@500;600;700&display=swap">
+<style>
+/* Layout: báo cáo một cột, khung 25 ô làm bản đồ cố định bên trái, bảng idea bấm vào để sáng ô tương ứng */
+:root{
+  --bg:#f6f7fb; --surface:#ffffff; --fg:#1d1b3a; --muted:#5d5b78; --line:#dcdeea;
+  --accent:#4a3aa8; --ice:#d9ecfb; --ice-fg:#1c5d8c;
+  --p-bg:#fde6dc; --p-fg:#9a3b17; --u-bg:#dcf2e6; --u-fg:#1f6b45; --c-bg:#e6e3fb; --c-fg:#4a3aa8; --s-bg:#fbf0d4; --s-fg:#7d5a08;
+  --ok-bg:#dcf2e6; --ok-fg:#1f6b45; --thin-bg:#fbf0d4; --thin-fg:#7d5a08; --gap-bg:#fde2e2; --gap-fg:#a12828;
+  --font-display:"Lexend","Be Vietnam Pro",system-ui,sans-serif; --font-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13121f; --surface:#1c1b2c; --fg:#ecebf7; --muted:#a6a4c0; --line:#33324a;
+  --accent:#a99bff; --ice:#16324a; --ice-fg:#9fd2f7;
+  --p-bg:#4a2416; --p-fg:#ffc2a8; --u-bg:#163a29; --u-fg:#a6e6c3; --c-bg:#2c2754; --c-fg:#cdc5ff; --s-bg:#3d3112; --s-fg:#f4d58a;
+  --ok-bg:#163a29; --ok-fg:#a6e6c3; --thin-bg:#3d3112; --thin-fg:#f4d58a; --gap-bg:#4a1c1c; --gap-fg:#ffb4b4; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13121f; --surface:#1c1b2c; --fg:#ecebf7; --muted:#a6a4c0; --line:#33324a;
+  --accent:#a99bff; --ice:#16324a; --ice-fg:#9fd2f7;
+  --p-bg:#4a2416; --p-fg:#ffc2a8; --u-bg:#163a29; --u-fg:#a6e6c3; --c-bg:#2c2754; --c-fg:#cdc5ff; --s-bg:#3d3112; --s-fg:#f4d58a;
+  --ok-bg:#163a29; --ok-fg:#a6e6c3; --thin-bg:#3d3112; --thin-fg:#f4d58a; --gap-bg:#4a1c1c; --gap-fg:#ffb4b4; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.6;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.25;margin:0}
+h1{font-size:clamp(26px,4vw,36px)} h2{font-size:22px} h3{font-size:17px}
+p{margin:0} a{color:var(--accent)} a:focus-visible,tr:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:70ch}
+header{display:flex;flex-direction:column;gap:10px}
+.take{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.take div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.take b{font-family:var(--font-display);font-size:22px;display:block;font-variant-numeric:tabular-nums}
+.take span{color:var(--muted);font-size:13.5px}
+section{display:flex;flex-direction:column;gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.board{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:flex;flex-direction:column;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.cell{aspect-ratio:1/1;max-width:100%;border-radius:8px;padding:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;border:1px solid transparent;transition:opacity .2s,transform .2s}
+.cell .code{font-family:var(--font-display);font-weight:700;font-size:13px}
+.cell .name{font-size:11px;line-height:1.25}
+.cell.p{background:var(--p-bg);color:var(--p-fg)} .cell.u{background:var(--u-bg);color:var(--u-fg)} .cell.c{background:var(--c-bg);color:var(--c-fg)} .cell.s{background:var(--s-bg);color:var(--s-fg)}
+.grid.focus .cell{opacity:.22} .grid.focus .cell.on{opacity:1;border-color:currentColor;transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.cell{transition:none}}
+.hint{font-size:13px;color:var(--muted)}
+.leg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.leg ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.leg li{display:flex;gap:10px;align-items:flex-start}
+.leg li div{display:flex;flex-direction:column;min-width:0} .leg li span:not(.chip){color:var(--muted);font-size:13px}
+.chip{display:inline-block;font-family:var(--font-display);font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:5px;white-space:nowrap}
+.chip.u{background:var(--u-bg);color:var(--u-fg)} .chip.c{background:var(--c-bg);color:var(--c-fg)} .chip.s{background:var(--s-bg);color:var(--s-fg)} .chip.p{background:var(--p-bg);color:var(--p-fg)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+#ideas tbody tr{cursor:pointer} #ideas tbody tr:hover,#ideas tbody tr.sel{background:var(--ice)}
+.ti{min-width:240px} .ti p{color:var(--muted);font-size:13px;margin-top:3px}
+.vids{min-width:220px;display:table-cell}
+.vid{display:block;text-decoration:none;color:var(--fg);font-size:12.5px;white-space:nowrap}
+.vid .vt{font-size:10.5px;font-weight:700;padding:0 5px;border-radius:4px;margin-right:4px}
+.vid.ih .vt{background:var(--ice);color:var(--ice-fg)} .vid.koc .vt{background:var(--c-bg);color:var(--c-fg)}
+.vid b{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
+.none{color:var(--muted);font-size:12.5px;font-style:italic}
+.gmv{font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok-fg)} .pill.thin{background:var(--thin-bg);color:var(--thin-fg)} .pill.gap{background:var(--gap-bg);color:var(--gap-fg)}
+.cap{display:block;color:var(--muted);font-size:12px;max-width:52ch}
+.ideatag{font-size:12px;font-weight:600;white-space:nowrap}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:20px}
+.two > div{min-width:0;display:flex;flex-direction:column;gap:10px}
+.alert{background:var(--gap-bg);color:var(--gap-fg);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.alert code{font-size:13px;word-break:break-all}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+ol.flow{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+ol.flow li::marker{font-family:var(--font-display);color:var(--accent);font-weight:700}
+ol.flow b{display:block}
+ol.flow span{color:var(--muted);font-size:13.5px}
+ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.note{font-size:13px;color:var(--muted)}
+
+.cards{display:flex;flex-direction:column;gap:14px}
+.vcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.vhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.vhead b{font-family:var(--font-display);font-size:15px}
+.vhead .who{color:var(--muted);font-size:13px}
+.met{display:flex;flex-wrap:wrap;gap:6px}
+.met span{font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-variant-numeric:tabular-nums}
+.met span.hi{background:var(--ok-bg);color:var(--ok-fg);border-color:transparent}
+.met span.lo{background:var(--gap-bg);color:var(--gap-fg);border-color:transparent}
+.strip{overflow-x:auto;border-radius:6px;background:var(--bg)}
+.strip img{display:block;max-width:none;height:200px}
+.strip .none{display:block;padding:20px;font-size:13px}
+dl.kv{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:0;font-size:13.5px}
+dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;min-width:0}
+@media (max-width:560px){dl.kv{grid-template-columns:1fr} dl.kv dt{margin-top:4px}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--accent);color:var(--surface);border-color:var(--accent)}
+.sb{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.sb div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.sb .t{font-family:var(--font-display);font-weight:600;color:var(--accent);font-size:13px}
+.sb span{font-size:13px;color:var(--muted)}
+.ledger td:first-child{white-space:nowrap}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">{{EYEBROW}}</span>
+  <h1>{{TITLE}}</h1>
+  <p class="lede">{{LEDE}}</p>
+</header>
+
+<div class="take">{{TAKEAWAYS}}</div>
+
+<section>
+  <span class="eyebrow">Phần 1</span>
+  <h2>Khung 25 ô</h2>
+  <div class="split">
+    <div class="board">
+      <div class="grid" id="grid">{{GRID}}</div>
+      <p class="hint">Bấm một dòng trong bảng idea bên dưới để sáng các ô tạo nên idea đó.</p>
+    </div>
+    <div class="leg">
+      <div><h3>USP (U1–U8)</h3><ul>{{LEG_U}}</ul></div>
+      <div><h3>Khách hàng (C1–C8)</h3><ul>{{LEG_C}}</ul></div>
+      <div><h3>Hoàn cảnh (S1–S8)</h3><ul>{{LEG_S}}</ul></div>
+    </div>
+  </div>
+  <p class="note">USP lấy từ mô tả và ảnh PDP, đối chiếu với những gì KOC nói trong video. Khách hàng và hoàn cảnh lấy từ transcript các video top: ai đang nói, nói với ai, trong tình huống nào.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Phần 2</span>
+  <h2>18 idea và video đang có</h2>
+  <p class="lede">{{IDEA_LEDE}}</p>
+  <div class="tbl">
+  <table id="ideas">
+    <thead><tr><th class="num">#</th><th>Đường nối</th><th>Idea và hướng triển khai</th><th>Video top 20 (Inhouse/KOC, GMV)</th><th class="num">GMV (tr)</th><th>Trạng thái</th></tr></thead>
+    <tbody>{{ROWS}}</tbody>
+  </table>
+  </div>
+  {{PLAYBOOK_CARDS}}
+</section>
+
+<section>
+  <span class="eyebrow">Phần 3</span>
+  <h2>Top 20 video theo GMV và idea được xếp</h2>
+  <div class="two">
+    <div><h3>Inhouse · {{INHOUSE_NAME}}</h3>
+      <div class="tbl"><table><thead><tr><th class="num">#</th><th>Video</th><th class="num">GMV (tr)</th><th class="num">Đơn</th><th class="num">ROI</th><th class="num">CTR</th><th class="num">CVR</th><th>Idea</th></tr></thead><tbody>{{TAB_IH}}</tbody></table></div>
+    </div>
+    <div><h3>KOC</h3>
+      <div class="tbl"><table><thead><tr><th class="num">#</th><th>Video</th><th class="num">GMV (tr)</th><th class="num">Đơn</th><th class="num">ROI</th><th class="num">CTR</th><th class="num">CVR</th><th>Idea</th></tr></thead><tbody>{{TAB_KOC}}</tbody></table></div>
+    </div>
+  </div>
+  <p class="note">{{TOP_NOTE}}</p>
+</section>
+
+<section>
+  <span class="eyebrow">Phần 4</span>
+  <h2>Hook hình ảnh và khung hình của top video (theo GMV GMV Max)</h2>
+  <p class="lede">{{HOOK_LEDE}}</p>
+
+  <div class="two">
+    <div class="card">
+      <h3>Điều quan sát được</h3>
+      <ul class="plain">{{OBSERVATIONS}}</ul>
+    </div>
+    <div class="card">
+      <h3>Áp quy tắc skill</h3>
+      <ul class="plain">{{RULES}}</ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Khung hình đề xuất cho brief (12–20 giây đầu)</h3>
+    <div class="sb">{{STORYBOARD}}</div>
+  </div>
+
+  <div class="card">
+    <h3>Sổ claim (tt4b-creative-engine) cho brief KOC và Inhouse</h3>
+    <div class="tbl"><table class="ledger">
+      <thead><tr><th>Mức</th><th>Câu đang dùng trong video</th><th>Lý do</th><th>Câu nên dùng</th></tr></thead>
+      <tbody>{{CLAIMS}}</tbody>
+    </table></div>
+  </div>
+
+  <div class="tabs" role="group" aria-label="Lọc video">
+    <button type="button" data-f="all" aria-pressed="true">Tất cả {{N_ALL}}</button>
+    <button type="button" data-f="ih" aria-pressed="false">Inhouse {{N_IH}}</button>
+    <button type="button" data-f="koc" aria-pressed="false">KOC {{N_KOC}}</button>
+  </div>
+  <p class="note">Mỗi dải frame gồm các mốc 0, 1, 2, 3, 5, 8 giây, giữa video và cuối video. Chip xanh là chỉ số tốt, chip đỏ là chỉ số yếu ({{THRESH_NOTE}}). Đây là mốc so sánh nội bộ trong 40 video này, không phải ngưỡng ngành. Tỷ lệ lấy theo campaign có nhiều hiển thị nhất của video đó. {{SKIP_NOTE}}</p>
+  <div class="cards">{{CARDS}}</div>
+</section>
+
+
+<section>
+  <span class="eyebrow">Ghi chú</span>
+  <p class="note">{{SOURCE_NOTE}}</p>
+</section>
+</div>
+
+<script>
+(function(){
+  var grid=document.getElementById('grid');
+  var rows=document.querySelectorAll('#ideas tbody tr');
+  function pick(tr){
+    var on=tr.classList.contains('sel');
+    rows.forEach(function(r){r.classList.remove('sel')});
+    grid.querySelectorAll('.cell').forEach(function(c){c.classList.remove('on')});
+    if(on){grid.classList.remove('focus');return}
+    tr.classList.add('sel');grid.classList.add('focus');
+    tr.getAttribute('data-cells').split(' ').forEach(function(k){var c=grid.querySelector('[data-c="'+k+'"]');if(c)c.classList.add('on')});
+  }
+  rows.forEach(function(tr){
+    tr.addEventListener('click',function(e){if(e.target.closest('a'))return;pick(tr)});
+    tr.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(tr)}});
+  });
+})();
+
+(function(){
+  var bs=document.querySelectorAll('.tabs button'),cs=document.querySelectorAll('.vcard');
+  bs.forEach(function(b){b.addEventListener('click',function(){
+    bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    var f=b.getAttribute('data-f');cs.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-src')===f)});
+  })});
+})();
+</script>

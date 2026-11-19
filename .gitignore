@@ -1,0 +1,16 @@
+# Cấu hình thật của tài khoản (không commit)
+config.local.json
+# Dữ liệu và kết quả chạy
+videos/
+strips/
+*.mp4
+work/
+output/
+*_report.html
+report.html
+top_gmvmax.json
+video_urls.json
+report_data.json
+hooks.json
+*.xlsx
+__pycache__/

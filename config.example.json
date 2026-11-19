@@ -1,0 +1,8 @@
+{
+ "advertiser_id": "<advertiser_id>",
+ "store_id": "<tiktok_shop_store_id>",
+ "store_authorized_bc_id": "<business_center_id>",
+ "inhouse_username": "<kenh_inhouse>",
+ "inhouse_identity_id": "<identity_id TT_USER cua kenh inhouse>",
+ "spu_id": "<item_group_id san pham>"
+}
